@@ -1,0 +1,43 @@
+@startuml
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #444444
+
+skinparam rectangle {
+    BackgroundColor #F5F5F5
+    BorderColor #555555
+    FontColor black
+}
+
+rectangle "BFS SEARCH ENGINE" as Title
+
+rectangle "bfs(graph, start, goal)" as B1
+
+rectangle "get_neighbors(graph, node)" as B2
+
+rectangle "is_goal(node, goal)" as B3
+
+rectangle "update_visited(node)" as B4
+
+rectangle "reconstruct_path(parent, goal)" as B5
+
+rectangle "return_result(path)" as B6
+
+B1 -down-> B2
+B2 -down-> B3
+
+B3 -down-> B4 : Not Goal
+
+B3 -right-> B5 : Goal Found
+
+B4 -up-> B2 : Continue Search
+
+B5 -down-> B6
+
+@enduml

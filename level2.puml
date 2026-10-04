@@ -1,0 +1,38 @@
+@startuml
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #444444
+skinparam RectangleBorderColor #555555
+skinparam RectangleBackgroundColor #F5F5F5
+
+rectangle "USER" as User
+
+rectangle "INPUT MODULE\nAccepts graph, start and goal" as Input
+
+rectangle "SEARCH CONTROLLER\nSelects BFS or DFS" as Controller
+
+rectangle "BFS SEARCH\nLevel-by-level using queue" as BFS
+
+rectangle "DFS SEARCH\nDeep-first using stack" as DFS
+
+rectangle "RESULT MODULE\nShows path and nodes expanded" as Result
+
+User -down-> Input : Graph + Start + Goal
+
+Input -down-> Controller : Input data
+
+Controller -down-> BFS : Select BFS
+Controller -down-> DFS : Select DFS
+
+BFS -down-> Result : Result
+DFS -down-> Result : Result
+
+Result -up-> User : Path / Not Found
+
+@enduml

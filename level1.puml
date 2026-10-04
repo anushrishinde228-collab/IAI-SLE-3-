@@ -1,0 +1,22 @@
+@startuml
+
+left to right direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #444444
+skinparam RectangleBorderColor #555555
+skinparam RectangleBackgroundColor #F5F5F5
+
+rectangle "USER" as User
+
+rectangle "SEARCH SYSTEM\nBFS & DFS Graph Search" as System
+
+User --> System : Graph + Start + Goal
+
+System --> User : Path + Nodes Expanded
+
+@enduml

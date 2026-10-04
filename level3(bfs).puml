@@ -1,0 +1,42 @@
+@startuml
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #444444
+
+skinparam rectangle {
+    BackgroundColor #F5F5F5
+    BorderColor #555555
+    FontColor black
+}
+
+rectangle "BFS SEARCH ENGINE" as Title
+
+rectangle "Initialize Frontier & Visited" as Init
+rectangle "Pop Node from Frontier" as Pop
+rectangle "Goal Test" as Goal
+
+rectangle "Reconstruct Path" as Path
+rectangle "Expand Neighbours" as Expand
+
+rectangle "Return Result" as Return
+rectangle "Update Visited Set" as Update
+
+Init -down-> Pop : Start node
+Pop -down-> Goal : Current node
+
+Goal -down-> Path : Goal found
+Goal -down-> Expand : Not goal
+
+Path -down-> Return
+
+Expand -down-> Update : Mark
+
+Update -up-> Pop : Push unvisited\nto back
+
+@enduml
